@@ -31,9 +31,8 @@ class Grid
         # scan down
         # make sure that the last number going down is inbounds
         if inbounds?(grid_size, x + n - 1, y)
-          down_product = (0..(n - 1)).inject(1) do |product, m|
-            # multiply the current product with the next number going down 
-            product * grid[x + m][y]
+          down_product = get_product(n) do |m|
+            grid[x + m][y]
           end
 
           maximum = get_max(maximum, down_product)
@@ -41,8 +40,8 @@ class Grid
 
         # scan down diagonal-left
         if inbounds?(grid_size, x + n - 1, y - n - 1)
-          diagonal_down_left_product = (0..(n - 1)).inject(1) do |product, m|
-            product * grid[x + m][y - m]
+          diagonal_down_left_product = get_product(n) do |m|
+            grid[x + m][y - m]
           end
 
           maximum = get_max(maximum, diagonal_down_left_product)
@@ -50,8 +49,8 @@ class Grid
         
         # scan down diagonal-right
         if inbounds?(grid_size, x + n - 1, y + n - 1)
-          diagonal_down_right_product = (0..(n - 1)).inject(1) do |product, m|
-            product * grid[x + m][y + m]
+          diagonal_down_right_product = get_product(n) do |m|
+            grid[x + m][y + m]
           end
 
           maximum = get_max(maximum, diagonal_down_right_product)

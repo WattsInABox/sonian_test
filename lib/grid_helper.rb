@@ -22,7 +22,7 @@ module GridHelper
   def get_product(n, &block)
     (0..(n - 1)).inject(1) do |product, m|
       # multiply the current product with the next number in the grid
-      product * yield(m)
+      product * block.call(m)
     end
   end
 
