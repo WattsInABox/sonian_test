@@ -1,5 +1,4 @@
 module GridHelper
-  protected
 
   def get_max(current_max, value)
     [current_max, value].max
