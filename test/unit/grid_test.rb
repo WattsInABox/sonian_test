@@ -20,6 +20,14 @@ class TestGrid < Test::Unit::TestCase
     should "find the largest product for more than 2 numbers" do
       assert_equal 7 * 9 * 8, @grid.max_product(3)
     end
+
+    should "find the largest product when it's on the x axis" do
+      assert false, "not implemented"
+    end
+
+    should "find the largest product when it's on the y axis" do
+      assert false, "not implemented"
+    end
   end
 
   context "#largest_product for sonian" do
