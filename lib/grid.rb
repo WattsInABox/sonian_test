@@ -26,7 +26,13 @@ class Grid
         # This will prevent over-scanning, I think.
 
         # scan to the right
-        maximum = get_max(maximum, row[y..(y + n - 1)].inject(1, :*))  unless y + n >= grid_size
+        if inbounds?(grid_size, x, y + n -1)
+          right_product = get_product(n) do |m|
+            grid[x][y + m]
+          end
+
+          maximum = get_max(maximum, right_product)
+        end
         
         # scan down
         # make sure that the last number going down is inbounds
